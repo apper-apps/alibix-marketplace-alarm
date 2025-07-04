@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import ApperIcon from '@/components/ApperIcon';
+import React, { useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import ApperIcon from "@/components/ApperIcon";
 
 const AdminLayout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navigationItems = [
+const navigationItems = [
     {
       name: 'Dashboard',
       path: '/admin',
@@ -33,6 +33,26 @@ const AdminLayout = () => {
       name: 'Users',
       path: '/admin/users',
       icon: 'Users',
+    },
+    {
+      name: 'Discounts',
+      path: '/admin/discounts',
+      icon: 'Percent',
+    },
+    {
+      name: 'Analytics',
+      path: '/admin/analytics',
+      icon: 'TrendingUp',
+    },
+    {
+      name: 'Settings',
+      path: '/admin/settings',
+      icon: 'Settings',
+    },
+    {
+      name: 'Support',
+      path: '/admin/support',
+      icon: 'MessageCircle',
     },
   ];
 
@@ -77,16 +97,25 @@ const AdminLayout = () => {
               );
             })}
           </nav>
-
-          <div className="mt-8 pt-8 border-t border-gray-200">
+<div className="mt-8 pt-8 border-t border-gray-200">
             <button
               onClick={handleBackToStore}
-              className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200 mb-2"
             >
               <ApperIcon name="ArrowLeft" size={20} />
               <span className="font-medium">Back to Store</span>
             </button>
-          </div>
+            <button
+              onClick={() => {
+                localStorage.removeItem('alibix_admin_user');
+                window.location.href = '/admin/login';
+              }}
+              className="w-full flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
+            >
+              <ApperIcon name="LogOut" size={20} />
+              <span className="font-medium">Logout</span>
+            </button>
+</div>
         </div>
       </div>
 
@@ -160,13 +189,23 @@ const AdminLayout = () => {
                 })}
               </nav>
 
-              <div className="mt-8 pt-8 border-t border-gray-200">
+<div className="mt-8 pt-8 border-t border-gray-200">
                 <button
                   onClick={handleBackToStore}
-                  className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200 mb-2"
                 >
                   <ApperIcon name="ArrowLeft" size={20} />
                   <span className="font-medium">Back to Store</span>
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('alibix_admin_user');
+                    window.location.href = '/admin/login';
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
+                >
+                  <ApperIcon name="LogOut" size={20} />
+                  <span className="font-medium">Logout</span>
                 </button>
               </div>
             </div>

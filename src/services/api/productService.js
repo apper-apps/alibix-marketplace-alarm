@@ -70,13 +70,16 @@ export const productService = {
       .slice(0, 6);
   },
 
-  async create(productData) {
+async create(productData) {
     await delay(300);
     const newProduct = {
       ...productData,
       Id: Math.max(...products.map(p => p.Id)) + 1,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
+      sold: 0,
+      reviews: 0,
+      rating: 0,
     };
     products.push(newProduct);
     return { ...newProduct };
@@ -277,5 +280,148 @@ export const productService = {
     return interactions
       .sort((a, b) => b.timestamp - a.timestamp)
       .slice(0, limit);
-  }
+},
+
+  // Admin-specific operations
+  async uploadImage(imageFile) {
+    await delay(500);
+    // In a real app, this would upload to a cloud storage service
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.readAsDataURL(imageFile);
+    });
+  },
+
+  async bulkUpdate(updates) {
+    await delay(400);
+    const updatedProducts = [];
+    
+    for (const update of updates) {
+      const index = products.findIndex(p => p.Id === update.Id);
+      if (index !== -1) {
+        products[index] = {
+          ...products[index],
+          ...update,
+          updatedAt: new Date().toISOString(),
+        };
+        updatedProducts.push({ ...products[index] });
+      }
+    }
+    
+    return updatedProducts;
+  },
+
+  async bulkDelete(ids) {
+    await delay(400);
+    const deletedProducts = [];
+    
+    for (const id of ids) {
+      const index = products.findIndex(p => p.Id === parseInt(id));
+      if (index !== -1) {
+        deletedProducts.push({ ...products[index] });
+        products.splice(index, 1);
+      }
+    }
+    
+    return deletedProducts;
+  },
+
+  async getStockReport() {
+    await delay(300);
+    const stockLevels = {
+      outOfStock: products.filter(p => p.stock === 0).length,
+      lowStock: products.filter(p => p.stock > 0 && p.stock <= 10).length,
+      mediumStock: products.filter(p => p.stock > 10 && p.stock <= 50).length,
+      highStock: products.filter(p => p.stock > 50).length,
+    };
+    
+    return {
+      ...stockLevels,
+      total: products.length,
+      averageStock: products.reduce((sum, p) => sum + p.stock, 0) / products.length,
+    };
+  },
+
+  async getSalesReport() {
+    await delay(300);
+    const totalSales = products.reduce((sum, p) => sum + (p.sold || 0), 0);
+    const totalRevenue = products.reduce((sum, p) => sum + (p.sold || 0) * p.price, 0);
+    
+    return {
+      totalSales,
+      totalRevenue,
+      averageSalePrice: totalRevenue / totalSales || 0,
+      topSellingProducts: products
+        .sort((a, b) => (b.sold || 0) - (a.sold || 0))
+        .slice(0, 10),
+    };
+  },
+
+  async getCategoryReport() {
+    await delay(300);
+    const categoryStats = {};
+    
+    products.forEach(product => {
+      if (!categoryStats[product.category]) {
+        categoryStats[product.category] = {
+          count: 0,
+          totalValue: 0,
+          averagePrice: 0,
+          totalSold: 0,
+        };
+      }
+      
+      categoryStats[product.category].count++;
+      categoryStats[product.category].totalValue += product.price;
+      categoryStats[product.category].totalSold += product.sold || 0;
+    });
+    
+    Object.keys(categoryStats).forEach(category => {
+      categoryStats[category].averagePrice = 
+        categoryStats[category].totalValue / categoryStats[category].count;
+    });
+    
+    return categoryStats;
+  },
+
+  // Product validation
+  validateProduct(productData) {
+    const errors = {};
+    
+    if (!productData.name || productData.name.trim().length < 2) {
+      errors.name = 'Product name must be at least 2 characters long';
+    }
+    
+    if (!productData.description || productData.description.trim().length < 10) {
+      errors.description = 'Product description must be at least 10 characters long';
+    }
+    
+    if (!productData.price || productData.price <= 0) {
+      errors.price = 'Product price must be greater than 0';
+    }
+    
+    if (!productData.stock || productData.stock < 0) {
+      errors.stock = 'Product stock cannot be negative';
+    }
+    
+    if (!productData.category || productData.category.trim().length === 0) {
+      errors.category = 'Product category is required';
+    }
+    
+    if (!productData.image || productData.image.trim().length === 0) {
+      errors.image = 'Product image is required';
+    }
+    
+    if (productData.discountPrice && productData.discountPrice >= productData.price) {
+      errors.discountPrice = 'Discount price must be less than regular price';
+    }
+    
+    return {
+      isValid: Object.keys(errors).length === 0,
+      errors,
+    };
+  },
 };

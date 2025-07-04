@@ -14,6 +14,8 @@ const Input = forwardRef(({
   fullWidth = false,
   className = '',
   containerClassName = '',
+  accept,
+  onChange,
   ...props
 }, ref) => {
   const inputClasses = `
@@ -53,12 +55,14 @@ const Input = forwardRef(({
           </div>
         )}
         
-        <input
+<input
           ref={ref}
           type={type}
           placeholder={placeholder}
           disabled={disabled}
           required={required}
+          accept={accept}
+          onChange={onChange}
           className={inputClasses}
           {...props}
         />

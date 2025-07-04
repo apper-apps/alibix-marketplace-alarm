@@ -1,15 +1,25 @@
+import 'react-toastify/dist/ReactToastify.css'
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, Router, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
+import AdminLogin from "@/components/pages/AdminLogin";
+import AdminDashboard from "@/components/pages/AdminDashboard";
+import AdminProducts from "@/components/pages/AdminProducts";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Layout from "@/components/organisms/Layout";
+import AdminLayout from "@/components/organisms/AdminLayout";
 import Home from "@/components/pages/Home";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { CartProvider } from "@/contexts/CartContext";
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated() ? children : <Navigate to="/admin/login" replace />;
+};
 
-import 'react-toastify/dist/ReactToastify.css'
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -57,21 +67,36 @@ function App() {
   }
 
 return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <CartProvider>
-          <WishlistProvider>
-            <Router>
-              <Routes>
-                {/* Public Routes */}
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  {/* Additional routes will be added as components are developed */}
-                </Route>
+    <AuthProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <Router>
+                <Routes>
+                  {/* Public Routes */}
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    {/* Additional routes will be added as components are developed */}
+                  </Route>
 
-                {/* Catch-all route - redirect to home */}
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
+                  {/* Admin Routes */}
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+                    <Route index element={<AdminDashboard />} />
+                    <Route path="products" element={<AdminProducts />} />
+                    <Route path="orders" element={<div className="p-6"><h1 className="text-2xl font-bold">Orders Management</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="categories" element={<div className="p-6"><h1 className="text-2xl font-bold">Categories Management</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="users" element={<div className="p-6"><h1 className="text-2xl font-bold">Users Management</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="discounts" element={<div className="p-6"><h1 className="text-2xl font-bold">Discounts Management</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="analytics" element={<div className="p-6"><h1 className="text-2xl font-bold">Analytics Dashboard</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="settings" element={<div className="p-6"><h1 className="text-2xl font-bold">Settings</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                    <Route path="support" element={<div className="p-6"><h1 className="text-2xl font-bold">Support Messages</h1><p className="text-gray-600">Coming soon...</p></div>} />
+                  </Route>
+
+                  {/* Catch-all route - redirect to home */}
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
             </Router>
           <ToastContainer
             position="top-right"
@@ -87,10 +112,11 @@ return (
             className="toast-container"
           />
 </WishlistProvider>
-        </CartProvider>
-      </LanguageProvider>
-    </ThemeProvider>
-  )
+            </CartProvider>
+          </LanguageProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    )
 }
 
 export default App
