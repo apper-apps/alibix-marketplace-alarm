@@ -9,6 +9,8 @@ import AdminDashboard from "@/components/pages/AdminDashboard";
 import AdminLogin from "@/components/pages/AdminLogin";
 import AdminProducts from "@/components/pages/AdminProducts";
 import Home from "@/components/pages/Home";
+import Cart from "@/components/pages/Cart";
+import Checkout from "@/components/pages/Checkout";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -112,8 +114,10 @@ const App = () => {
                   <BrowserRouter>
                     <Routes>
                       {/* Public Routes */}
-                      <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="checkout" element={<Checkout />} />
                         {/* Additional routes will be added as components are developed */}
                       </Route>
 

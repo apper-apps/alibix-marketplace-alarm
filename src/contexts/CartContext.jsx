@@ -94,9 +94,16 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('alibix_cart', JSON.stringify(state));
   }, [state]);
 
-  const addToCart = (product) => {
+const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
     toast.success(`${product.name} added to cart!`);
+  };
+
+  const addToCartWithQuantity = (product, quantity = 1) => {
+    for (let i = 0; i < quantity; i++) {
+      dispatch({ type: 'ADD_TO_CART', payload: product });
+    }
+    toast.success(`${product.name} (${quantity}) added to cart!`);
   };
 
   const removeFromCart = (productId) => {
@@ -121,9 +128,10 @@ export const CartProvider = ({ children }) => {
     return state.items.some(item => item.Id === productId);
   };
 
-  const value = {
+const value = {
     ...state,
     addToCart,
+    addToCartWithQuantity,
     removeFromCart,
     updateQuantity,
     clearCart,

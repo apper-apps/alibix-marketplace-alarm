@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
@@ -9,12 +9,13 @@ import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import Badge from '@/components/atoms/Badge';
 import Price from '@/components/atoms/Price';
+import QuantitySelector from '@/components/molecules/QuantitySelector';
 import { viewTrackingService } from '@/services/api/viewTrackingService';
 import { recommendationService } from '@/services/api/recommendationService';
 
 const ProductCard = ({ product, variant = 'default', className = '' }) => {
-  const navigate = useNavigate();
-  const { addToCart, isInCart } = useCart();
+const navigate = useNavigate();
+  const { addToCartWithQuantity, isInCart, getCartItem } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { t, language } = useLanguage();
   const { isDark } = useTheme();
@@ -30,9 +31,11 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
     navigate(`/product/${product.Id}`);
   };
 
+const [selectedQuantity, setSelectedQuantity] = useState(1);
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    addToCart(product);
+    addToCartWithQuantity(product, selectedQuantity);
   };
 
   const handleWishlistToggle = (e) => {
@@ -157,31 +160,44 @@ return (
             size="medium"
           />
         </div>
-
-        {/* Action Buttons */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            {product.isCODAllowed && (
-              <Badge variant="cod" size="small">
-                COD
-              </Badge>
-            )}
-{product.isFromChina && (
-            <span className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              22 days delivery
-            </span>
-          )}
+{/* Action Buttons */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              {product.isCODAllowed && (
+                <Badge variant="cod" size="small">
+                  COD
+                </Badge>
+              )}
+              {product.isFromChina && (
+                <span className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  22 days delivery
+                </span>
+              )}
+            </div>
           </div>
 
-          <Button
-            variant={inCart ? 'success' : 'primary'}
-            size="small"
-            icon={inCart ? 'Check' : 'Plus'}
-            onClick={handleAddToCart}
-            disabled={product.stock === 0}
-          >
-            {inCart ? 'Added' : 'Add'}
-          </Button>
+          {/* Quantity Selector and Add to Cart */}
+          <div className="flex items-center space-x-2">
+            <QuantitySelector
+              quantity={selectedQuantity}
+              onQuantityChange={setSelectedQuantity}
+              min={1}
+              max={Math.min(product.stock, 10)}
+              disabled={product.stock === 0}
+              className="flex-1"
+            />
+            <Button
+              variant={inCart ? 'success' : 'primary'}
+              size="small"
+              icon={inCart ? 'Check' : 'ShoppingCart'}
+              onClick={handleAddToCart}
+              disabled={product.stock === 0}
+              className="flex-shrink-0"
+            >
+              {inCart ? 'Added' : 'Add'}
+            </Button>
+          </div>
         </div>
 
 {/* COD Warning for China Products */}

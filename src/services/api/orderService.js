@@ -138,20 +138,22 @@ export const orderService = {
   },
 
   // Calculate order totals
-  calculateOrderTotal(items, codFee = 0) {
+calculateOrderTotal(items, promoDiscount = 0, codFee = 0) {
     const subtotal = items.reduce((sum, item) => {
       const price = item.discountPrice || item.price;
       return sum + (price * item.quantity);
     }, 0);
     
-    const shipping = subtotal >= 2000 ? 0 : 150; // Free shipping over Rs. 2000
-    const total = subtotal + shipping + codFee;
+    const deliveryFee = 170; // Fixed delivery fee Rs. 170
+    const discountAmount = Math.min(promoDiscount, subtotal * 0.5); // Max 50% discount
+    const total = subtotal + deliveryFee + codFee - discountAmount;
     
     return {
       subtotal,
-      shipping,
+      deliveryFee,
+      promoDiscount: discountAmount,
       codFee,
-      total,
+      total: Math.max(total, 0),
     };
   },
 
