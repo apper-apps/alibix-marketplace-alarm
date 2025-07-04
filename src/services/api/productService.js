@@ -166,4 +166,116 @@ export const productService = {
     await delay(250);
     return products.sort((a, b) => (b.sold || 0) - (a.sold || 0)).slice(0, 10);
   },
+// AI Recommendation endpoints
+  async getRecommendationsBasedOnViews(viewHistory = [], limit = 6) {
+    await delay(300);
+    
+    if (viewHistory.length === 0) {
+      return this.getFeatured().then(featured => featured.slice(0, limit));
+    }
+    
+    // Extract categories and preferences from view history
+    const categoryFrequency = {};
+    const priceRanges = [];
+    
+    viewHistory.forEach(item => {
+      categoryFrequency[item.category] = (categoryFrequency[item.category] || 0) + 1;
+      priceRanges.push(item.price || 0);
+    });
+    
+    // Find most viewed categories
+    const topCategories = Object.entries(categoryFrequency)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 3)
+      .map(([category]) => category);
+    
+    // Calculate average price range
+    const avgPrice = priceRanges.length > 0 
+      ? priceRanges.reduce((sum, price) => sum + price, 0) / priceRanges.length 
+      : 5000;
+    
+    // Get viewed product IDs to exclude
+    const viewedIds = viewHistory.map(item => item.Id);
+    
+    // Find similar products
+    const recommendations = products.filter(product => {
+      // Exclude already viewed products
+      if (viewedIds.includes(product.Id)) return false;
+      
+      // Prefer products in viewed categories
+      if (topCategories.includes(product.category)) return true;
+      
+      // Include products in similar price range
+      const priceDiff = Math.abs(product.price - avgPrice) / avgPrice;
+      return priceDiff < 0.5;
+    });
+    
+    // Score and sort recommendations
+    const scoredRecommendations = recommendations.map(product => {
+      let score = 0;
+      
+      // Category preference score
+      if (topCategories.includes(product.category)) {
+        const categoryIndex = topCategories.indexOf(product.category);
+        score += (3 - categoryIndex) * 10;
+      }
+      
+      // Price similarity score
+      const priceDiff = Math.abs(product.price - avgPrice) / avgPrice;
+      score += Math.max(0, 5 - priceDiff * 10);
+      
+      // Product quality indicators
+      score += (product.rating || 0) * 2;
+      score += Math.log(product.reviews || 1);
+      
+      if (product.featured) score += 3;
+      if (product.discountPrice && product.discountPrice < product.price) score += 2;
+      
+      return { ...product, recommendationScore: score };
+    });
+    
+    return scoredRecommendations
+      .sort((a, b) => b.recommendationScore - a.recommendationScore)
+      .slice(0, limit);
+  },
+
+  async trackProductInteraction(productId, interactionType = 'view') {
+    await delay(100);
+    
+    // Store interaction data for analytics
+    const interactions = JSON.parse(localStorage.getItem('alibix_interactions') || '[]');
+    
+    const interaction = {
+      productId: parseInt(productId),
+      type: interactionType,
+      timestamp: Date.now(),
+      sessionId: this.getSessionId()
+    };
+    
+    interactions.push(interaction);
+    
+    // Keep only last 200 interactions
+    const limitedInteractions = interactions.slice(-200);
+    localStorage.setItem('alibix_interactions', JSON.stringify(limitedInteractions));
+    
+    return interaction;
+  },
+
+  getSessionId() {
+    let sessionId = sessionStorage.getItem('alibix_session_id');
+    if (!sessionId) {
+      sessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+      sessionStorage.setItem('alibix_session_id', sessionId);
+    }
+    return sessionId;
+  },
+
+  async getInteractionHistory(limit = 50) {
+    await delay(150);
+    
+    const interactions = JSON.parse(localStorage.getItem('alibix_interactions') || '[]');
+    return interactions
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .slice(0, limit);
+  }
 };

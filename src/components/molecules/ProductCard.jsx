@@ -4,18 +4,29 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import Badge from '@/components/atoms/Badge';
 import Price from '@/components/atoms/Price';
+import { viewTrackingService } from '@/services/api/viewTrackingService';
+import { recommendationService } from '@/services/api/recommendationService';
 
 const ProductCard = ({ product, variant = 'default', className = '' }) => {
   const navigate = useNavigate();
   const { addToCart, isInCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { t, language } = useLanguage();
+  const { isDark } = useTheme();
 
-  const handleProductClick = () => {
+  const handleProductClick = async () => {
+    // Track product view for AI recommendations
+    try {
+      await viewTrackingService.trackProductView(product.Id);
+    } catch (error) {
+      console.error('Error tracking product view:', error);
+    }
+    
     navigate(`/product/${product.Id}`);
   };
 
@@ -46,13 +57,15 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
     }
   };
 
-  return (
-    <motion.div
-      className={`card cursor-pointer ${getCardClasses()} ${className}`}
-      onClick={handleProductClick}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2 }}
-    >
+return (
+  <motion.div
+    className={`card cursor-pointer transition-colors duration-300 ${getCardClasses()} ${
+      isDark ? 'bg-gray-800 border border-gray-700 hover:border-gray-600' : 'bg-white'
+    } ${className}`}
+    onClick={handleProductClick}
+    whileHover={{ y: -5 }}
+    transition={{ duration: 0.2 }}
+  >
       <div className="relative">
         {/* Product Image */}
         <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
@@ -107,11 +120,13 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
         </div>
       </div>
 
-      {/* Product Info */}
-      <div className="p-4">
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-secondary transition-colors duration-200">
-          {productName}
-        </h3>
+{/* Product Info */}
+<div className="p-4">
+  <h3 className={`font-semibold mb-2 line-clamp-2 hover:text-secondary transition-colors duration-200 ${
+    isDark ? 'text-white' : 'text-gray-900'
+  }`}>
+    {productName}
+  </h3>
 
         {/* Rating */}
         <div className="flex items-center mb-2">
@@ -128,11 +143,11 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
                 }`}
               />
             ))}
-          </div>
-          <span className="text-sm text-gray-600 ml-2">
-            ({product.reviews})
-          </span>
-        </div>
+</div>
+        <span className={`text-sm ml-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          ({product.reviews})
+        </span>
+      </div>
 
         {/* Price */}
         <div className="mb-4">
@@ -151,11 +166,11 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
                 COD
               </Badge>
             )}
-            {product.isFromChina && (
-              <span className="text-xs text-gray-500">
-                22 days delivery
-              </span>
-            )}
+{product.isFromChina && (
+            <span className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              22 days delivery
+            </span>
+          )}
           </div>
 
           <Button
@@ -169,15 +184,19 @@ const ProductCard = ({ product, variant = 'default', className = '' }) => {
           </Button>
         </div>
 
-        {/* COD Warning for China Products */}
-        {product.isFromChina && (
-          <div className="mt-3 p-2 bg-blue-50 rounded-lg">
-            <p className="text-xs text-blue-800 flex items-center">
-              <ApperIcon name="Info" size={12} className="mr-1" />
-              Online payment only - COD not available
-            </p>
-          </div>
-        )}
+{/* COD Warning for China Products */}
+{product.isFromChina && (
+  <div className={`mt-3 p-2 rounded-lg ${
+    isDark ? 'bg-blue-900 border border-blue-700' : 'bg-blue-50'
+  }`}>
+    <p className={`text-xs flex items-center ${
+      isDark ? 'text-blue-200' : 'text-blue-800'
+    }`}>
+      <ApperIcon name="Info" size={12} className="mr-1" />
+      Online payment only - COD not available
+    </p>
+  </div>
+)}
       </div>
     </motion.div>
   );

@@ -4,12 +4,12 @@ import { ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
 import Layout from "@/components/organisms/Layout";
 import Home from "@/components/pages/Home";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { CartProvider } from "@/contexts/CartContext";
 
 import 'react-toastify/dist/ReactToastify.css'
-
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -57,22 +57,22 @@ function App() {
   }
 
 return (
-    <LanguageProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <Router>
-            <Routes>
-              {/* Public Routes */}
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                {/* Additional routes will be added as components are developed */}
-              </Route>
+    <ThemeProvider>
+      <LanguageProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <Router>
+              <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  {/* Additional routes will be added as components are developed */}
+                </Route>
 
-              {/* Catch-all route - redirect to home */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Router>
-          
+                {/* Catch-all route - redirect to home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Router>
           <ToastContainer
             position="top-right"
             autoClose={3000}
@@ -86,9 +86,10 @@ return (
             theme="light"
             className="toast-container"
           />
-        </WishlistProvider>
-      </CartProvider>
-    </LanguageProvider>
+</WishlistProvider>
+        </CartProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   )
 }
 

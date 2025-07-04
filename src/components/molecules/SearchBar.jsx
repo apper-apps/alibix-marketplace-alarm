@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import { productService } from '@/services/api/productService';
+import { recommendationService } from '@/services/api/recommendationService';
 
 const SearchBar = ({ onSearch, placeholder, className = '' }) => {
   const [query, setQuery] = useState('');
@@ -74,10 +75,17 @@ const SearchBar = ({ onSearch, placeholder, className = '' }) => {
     }
   };
 
-  const handleSearch = (searchQuery = query) => {
-    if (!searchQuery.trim()) return;
+const handleSearch = async (searchQuery = query) => {
+  if (!searchQuery.trim()) return;
 
-    // Add to recent searches
+  try {
+    // Get search results count for recommendation tracking
+    const results = await productService.search(searchQuery);
+    
+    // Add to search history for AI recommendations
+    await recommendationService.addToSearchHistory(searchQuery, results.length);
+    
+    // Add to recent searches (UI display)
     const newRecentSearches = [
       searchQuery,
       ...recentSearches.filter(s => s !== searchQuery)
@@ -94,7 +102,14 @@ const SearchBar = ({ onSearch, placeholder, className = '' }) => {
     if (onSearch) {
       onSearch(searchQuery);
     }
-  };
+  } catch (error) {
+    console.error('Error handling search:', error);
+    // Fallback to basic search functionality
+    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    setShowSuggestions(false);
+    setQuery('');
+  }
+};
 
   const handleSuggestionClick = (suggestion) => {
     navigate(`/product/${suggestion.id}`);
