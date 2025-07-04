@@ -15,20 +15,54 @@ import { categoryService } from '@/services/api/categoryService';
 import { recommendationService } from '@/services/api/recommendationService';
 
 const Home = () => {
-  const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [newArrivals, setNewArrivals] = useState([]);
-  const [discountedProducts, setDiscountedProducts] = useState([]);
-  const [featuredCategories, setFeaturedCategories] = useState([]);
-  const [recommendedProducts, setRecommendedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-  const { t } = useLanguage();
-  const { isDark } = useTheme();
-  useEffect(() => {
-    loadHomeData();
-  }, []);
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+    const [newArrivals, setNewArrivals] = useState([]);
+    const [discountedProducts, setDiscountedProducts] = useState([]);
+    const [featuredCategories, setFeaturedCategories] = useState([]);
+    const [recommendedProducts, setRecommendedProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [flashSaleTimeLeft, setFlashSaleTimeLeft] = useState({
+      hours: 12,
+      minutes: 45,
+      seconds: 30
+    });
+    const navigate = useNavigate();
+    const { t } = useLanguage();
+    const { isDark } = useTheme();
 
+    useEffect(() => {
+      loadHomeData();
+    }, []);
+
+    // Flash sale countdown timer
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setFlashSaleTimeLeft(prev => {
+          let { hours, minutes, seconds } = prev;
+          
+          if (seconds > 0) {
+            seconds--;
+          } else if (minutes > 0) {
+            minutes--;
+            seconds = 59;
+          } else if (hours > 0) {
+            hours--;
+            minutes = 59;
+            seconds = 59;
+          } else {
+            // Reset timer when it reaches zero
+            hours = 23;
+            minutes = 59;
+            seconds = 59;
+          }
+          
+          return { hours, minutes, seconds };
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }, []);
 const loadHomeData = async () => {
   try {
     setLoading(true);
@@ -242,12 +276,44 @@ return (
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Flash Deals
-          </h2>
-          <p className={`text-lg ${isDark ? 'text-red-200' : 'text-red-100'}`}>
+          <div className="flex items-center justify-center mb-4">
+            <ApperIcon name="Zap" size={32} className="mr-3" />
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Flash Deals
+            </h2>
+          </div>
+          <p className={`text-lg mb-6 ${isDark ? 'text-red-200' : 'text-red-100'}`}>
             Limited time offers - Don't miss out!
           </p>
+          
+          {/* Countdown Timer */}
+          <div className="flex items-center justify-center space-x-4 mb-6">
+            <div className="text-center">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 min-w-[60px]">
+                <div className="text-2xl font-bold">{String(flashSaleTimeLeft.hours).padStart(2, '0')}</div>
+                <div className="text-xs opacity-80">Hours</div>
+              </div>
+            </div>
+            <div className="text-2xl font-bold">:</div>
+            <div className="text-center">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 min-w-[60px]">
+                <div className="text-2xl font-bold">{String(flashSaleTimeLeft.minutes).padStart(2, '0')}</div>
+                <div className="text-xs opacity-80">Minutes</div>
+              </div>
+            </div>
+            <div className="text-2xl font-bold">:</div>
+            <div className="text-center">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 min-w-[60px]">
+                <div className="text-2xl font-bold">{String(flashSaleTimeLeft.seconds).padStart(2, '0')}</div>
+                <div className="text-xs opacity-80">Seconds</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full">
+            <ApperIcon name="Clock" size={16} className="mr-2" />
+            <span className="text-sm font-medium">Hurry! Sale ends soon</span>
+          </div>
         </motion.div>
 
         <div className="product-grid">
