@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "name": "Electronics",
+    "nameUrdu": "الیکٹرانکس",
+    "slug": "electronics",
+    "image": "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=500&fit=crop",
+    "description": "Latest smartphones, laptops, headphones, and electronic gadgets",
+    "featured": true,
+    "productCount": 45
+  },
+  {
+    "Id": 2,
+    "name": "Clothing",
+    "nameUrdu": "کپڑے",
+    "slug": "clothing",
+    "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&h=500&fit=crop",
+    "description": "Fashion clothing for men and women of all ages",
+    "featured": true,
+    "productCount": 128
+  },
+  {
+    "Id": 3,
+    "name": "Shoes",
+    "nameUrdu": "جوتے",
+    "slug": "shoes",
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=500&fit=crop",
+    "description": "Comfortable and stylish footwear for every occasion",
+    "featured": true,
+    "productCount": 67
+  },
+  {
+    "Id": 4,
+    "name": "Accessories",
+    "nameUrdu": "لوازمات",
+    "slug": "accessories",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+    "description": "Bags, wallets, watches, and other fashion accessories",
+    "featured": true,
+    "productCount": 89
+  },
+  {
+    "Id": 5,
+    "name": "Home & Garden",
+    "nameUrdu": "گھر اور باغ",
+    "slug": "home-garden",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=500&fit=crop",
+    "description": "Home decor, furniture, and garden essentials",
+    "featured": false,
+    "productCount": 34
+  },
+  {
+    "Id": 6,
+    "name": "Beauty & Health",
+    "nameUrdu": "خوبصورتی اور صحت",
+    "slug": "beauty-health",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop",
+    "description": "Skincare, makeup, and health products",
+    "featured": false,
+    "productCount": 52
+  },
+  {
+    "Id": 7,
+    "name": "Sports & Fitness",
+    "nameUrdu": "کھیل اور فٹنس",
+    "slug": "sports-fitness",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop",
+    "description": "Sports equipment and fitness accessories",
+    "featured": false,
+    "productCount": 28
+  },
+  {
+    "Id": 8,
+    "name": "Books & Media",
+    "nameUrdu": "کتابیں اور میڈیا",
+    "slug": "books-media",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
+    "description": "Books, movies, music, and educational materials",
+    "featured": false,
+    "productCount": 41
+  },
+  {
+    "Id": 9,
+    "name": "Toys & Games",
+    "nameUrdu": "کھلونے اور کھیل",
+    "slug": "toys-games",
+    "image": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=500&fit=crop",
+    "description": "Toys, games, and entertainment for all ages",
+    "featured": false,
+    "productCount": 36
+  },
+  {
+    "Id": 10,
+    "name": "Automotive",
+    "nameUrdu": "گاڑیاں",
+    "slug": "automotive",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop",
+    "description": "Car accessories and automotive parts",
+    "featured": false,
+    "productCount": 19
+  }
+]

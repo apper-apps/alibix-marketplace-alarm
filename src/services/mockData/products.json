@@ -1,0 +1,571 @@
+[
+  {
+    "Id": 1,
+    "name": "Samsung Galaxy S24 Ultra",
+    "nameUrdu": "سامسنگ گلیکسی ایس 24 الٹرا",
+    "description": "Latest flagship smartphone with advanced AI features, 200MP camera, and S Pen support. Perfect for photography and productivity.",
+    "price": 350000,
+    "discountPrice": 320000,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&h=500&fit=crop"
+    ],
+    "stock": 25,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.8,
+    "reviews": 152,
+    "featured": true,
+    "isNew": true,
+    "sold": 89,
+    "specifications": {
+      "brand": "Samsung",
+      "model": "Galaxy S24 Ultra",
+      "storage": "256GB",
+      "ram": "12GB",
+      "display": "6.8 inches",
+      "camera": "200MP",
+      "battery": "5000mAh"
+    }
+  },
+  {
+    "Id": 2,
+    "name": "Nike Air Max 270",
+    "nameUrdu": "نائیک ایئر میکس 270",
+    "description": "Comfortable running shoes with Air Max technology. Perfect for daily wear and athletic activities.",
+    "price": 25000,
+    "discountPrice": 22000,
+    "category": "shoes",
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&h=500&fit=crop"
+    ],
+    "stock": 45,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.6,
+    "reviews": 89,
+    "featured": true,
+    "isNew": false,
+    "sold": 134,
+    "specifications": {
+      "brand": "Nike",
+      "model": "Air Max 270",
+      "sizes": ["US 7", "US 8", "US 9", "US 10", "US 11"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "material": "Synthetic leather"
+    }
+  },
+  {
+    "Id": 3,
+    "name": "Wireless Bluetooth Headphones",
+    "nameUrdu": "وائرلیس بلوٹوتھ ہیڈفونز",
+    "description": "Premium quality wireless headphones with noise cancellation and 30-hour battery life. Ships from China.",
+    "price": 8000,
+    "discountPrice": 6500,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop"
+    ],
+    "stock": 100,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.3,
+    "reviews": 267,
+    "featured": false,
+    "isNew": true,
+    "sold": 203,
+    "specifications": {
+      "brand": "Generic",
+      "connectivity": "Bluetooth 5.0",
+      "battery": "30 hours",
+      "features": ["Noise Cancellation", "Quick Charge", "Foldable"]
+    }
+  },
+  {
+    "Id": 4,
+    "name": "Men's Formal Dress Shirt",
+    "nameUrdu": "مردانہ فارمل ڈریس شرٹ",
+    "description": "Premium cotton formal shirt perfect for office wear and special occasions. Available in multiple colors.",
+    "price": 4500,
+    "discountPrice": 3800,
+    "category": "clothing",
+    "images": [
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=500&fit=crop"
+    ],
+    "stock": 60,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.4,
+    "reviews": 78,
+    "featured": false,
+    "isNew": false,
+    "sold": 156,
+    "specifications": {
+      "material": "100% Cotton",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["White", "Blue", "Black", "Gray"],
+      "care": "Machine washable"
+    }
+  },
+  {
+    "Id": 5,
+    "name": "Women's Handbag",
+    "nameUrdu": "خواتین کا ہینڈ بیگ",
+    "description": "Elegant leather handbag with multiple compartments. Perfect for daily use and special occasions.",
+    "price": 12000,
+    "discountPrice": 9500,
+    "category": "accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=500&h=500&fit=crop"
+    ],
+    "stock": 35,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.7,
+    "reviews": 123,
+    "featured": true,
+    "isNew": false,
+    "sold": 87,
+    "specifications": {
+      "material": "Genuine Leather",
+      "colors": ["Black", "Brown", "Tan", "Red"],
+      "dimensions": "30cm x 25cm x 15cm",
+      "features": ["Multiple compartments", "Adjustable strap"]
+    }
+  },
+  {
+    "Id": 6,
+    "name": "Gaming Mechanical Keyboard",
+    "nameUrdu": "گیمنگ مکینیکل کیبورڈ",
+    "description": "RGB backlit mechanical keyboard with blue switches. Perfect for gaming and typing. Ships from China.",
+    "price": 15000,
+    "discountPrice": 12500,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1585837115031-3e9c14f83f5c?w=500&h=500&fit=crop"
+    ],
+    "stock": 28,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.5,
+    "reviews": 195,
+    "featured": false,
+    "isNew": true,
+    "sold": 94,
+    "specifications": {
+      "switches": "Blue Mechanical",
+      "backlight": "RGB",
+      "connectivity": "USB-C",
+      "layout": "104 keys",
+      "features": ["Anti-ghosting", "Programmable keys"]
+    }
+  },
+  {
+    "Id": 7,
+    "name": "Casual Sneakers",
+    "nameUrdu": "کیژوئل سنیکرز",
+    "description": "Comfortable casual sneakers perfect for everyday wear. Lightweight and durable construction.",
+    "price": 8500,
+    "discountPrice": 7200,
+    "category": "shoes",
+    "images": [
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop"
+    ],
+    "stock": 55,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.2,
+    "reviews": 156,
+    "featured": false,
+    "isNew": false,
+    "sold": 178,
+    "specifications": {
+      "material": "Canvas and Rubber",
+      "sizes": ["US 6", "US 7", "US 8", "US 9", "US 10", "US 11"],
+      "colors": ["White", "Black", "Navy", "Gray"],
+      "style": "Low-top"
+    }
+  },
+  {
+    "Id": 8,
+    "name": "Women's Summer Dress",
+    "nameUrdu": "خواتین کا موسم گرما کا لباس",
+    "description": "Light and breezy summer dress perfect for hot weather. Made from breathable fabric.",
+    "price": 6500,
+    "discountPrice": 5200,
+    "category": "clothing",
+    "images": [
+      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1585487000143-66b1526f2923?w=500&h=500&fit=crop"
+    ],
+    "stock": 42,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.6,
+    "reviews": 89,
+    "featured": true,
+    "isNew": true,
+    "sold": 112,
+    "specifications": {
+      "material": "Cotton blend",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Floral", "Solid Blue", "Striped", "Polka Dot"],
+      "length": "Knee-length"
+    }
+  },
+  {
+    "Id": 9,
+    "name": "Smartwatch Fitness Tracker",
+    "nameUrdu": "اسمارٹ واچ فٹنس ٹریکر",
+    "description": "Advanced fitness tracker with heart rate monitoring and GPS. Perfect for health-conscious users.",
+    "price": 18000,
+    "discountPrice": 15500,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1579586337278-3f436f25d4d5?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&h=500&fit=crop"
+    ],
+    "stock": 33,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.4,
+    "reviews": 145,
+    "featured": false,
+    "isNew": true,
+    "sold": 67,
+    "specifications": {
+      "display": "1.4 inch AMOLED",
+      "battery": "7 days",
+      "features": ["Heart Rate", "GPS", "Water Resistant", "Sleep Tracking"],
+      "compatibility": "iOS and Android"
+    }
+  },
+  {
+    "Id": 10,
+    "name": "Leather Wallet",
+    "nameUrdu": "چمڑے کا بٹوا",
+    "description": "Premium leather wallet with RFID protection. Multiple card slots and cash compartments.",
+    "price": 3500,
+    "discountPrice": 2800,
+    "category": "accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1520006403909-838d6b92c22e?w=500&h=500&fit=crop"
+    ],
+    "stock": 75,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.3,
+    "reviews": 234,
+    "featured": false,
+    "isNew": false,
+    "sold": 298,
+    "specifications": {
+      "material": "Genuine Leather",
+      "features": ["RFID Protection", "8 Card Slots", "2 Cash Compartments"],
+      "colors": ["Black", "Brown", "Tan"],
+      "dimensions": "11cm x 8cm x 2cm"
+    }
+  },
+  {
+    "Id": 11,
+    "name": "Bluetooth Speaker",
+    "nameUrdu": "بلوٹوتھ اسپیکر",
+    "description": "Portable wireless speaker with powerful bass and waterproof design. Perfect for outdoor activities.",
+    "price": 7500,
+    "discountPrice": 6200,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1544966503-7ba21ac2be38?w=500&h=500&fit=crop"
+    ],
+    "stock": 48,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.1,
+    "reviews": 178,
+    "featured": false,
+    "isNew": false,
+    "sold": 156,
+    "specifications": {
+      "connectivity": "Bluetooth 5.0",
+      "battery": "12 hours",
+      "features": ["Waterproof", "Hands-free calling", "Portable"],
+      "output": "20W"
+    }
+  },
+  {
+    "Id": 12,
+    "name": "Men's Jeans",
+    "nameUrdu": "مردانہ جینز",
+    "description": "Classic fit denim jeans with premium quality fabric. Comfortable for all-day wear.",
+    "price": 5500,
+    "discountPrice": 4600,
+    "category": "clothing",
+    "images": [
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=500&fit=crop"
+    ],
+    "stock": 67,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.5,
+    "reviews": 201,
+    "featured": false,
+    "isNew": false,
+    "sold": 234,
+    "specifications": {
+      "material": "Premium Denim",
+      "fit": "Regular",
+      "sizes": ["30", "32", "34", "36", "38", "40"],
+      "colors": ["Dark Blue", "Light Blue", "Black"],
+      "features": ["5 pockets", "Belt loops"]
+    }
+  },
+  {
+    "Id": 13,
+    "name": "Laptop Stand",
+    "nameUrdu": "لیپ ٹاپ اسٹینڈ",
+    "description": "Adjustable aluminum laptop stand for better ergonomics. Compatible with all laptop sizes.",
+    "price": 4200,
+    "discountPrice": 3500,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1554210448-4e28c689e5f7?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=500&h=500&fit=crop"
+    ],
+    "stock": 85,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.2,
+    "reviews": 145,
+    "featured": false,
+    "isNew": true,
+    "sold": 89,
+    "specifications": {
+      "material": "Aluminum alloy",
+      "adjustable": "Yes",
+      "compatibility": "11-17 inch laptops",
+      "features": ["Foldable", "Non-slip pads", "Heat dissipation"]
+    }
+  },
+  {
+    "Id": 14,
+    "name": "Women's Sandals",
+    "nameUrdu": "خواتین کے سینڈل",
+    "description": "Comfortable summer sandals with cushioned sole. Perfect for casual and beach wear.",
+    "price": 3800,
+    "discountPrice": 3200,
+    "category": "shoes",
+    "images": [
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop"
+    ],
+    "stock": 52,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.0,
+    "reviews": 167,
+    "featured": false,
+    "isNew": false,
+    "sold": 201,
+    "specifications": {
+      "material": "Synthetic leather",
+      "sole": "Rubber",
+      "sizes": ["US 5", "US 6", "US 7", "US 8", "US 9"],
+      "colors": ["Black", "Brown", "Tan", "White"],
+      "heel": "Flat"
+    }
+  },
+  {
+    "Id": 15,
+    "name": "Power Bank 20000mAh",
+    "nameUrdu": "پاور بینک 20000mAh",
+    "description": "High-capacity power bank with fast charging technology. Multiple USB ports for charging multiple devices.",
+    "price": 5800,
+    "discountPrice": 4900,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1609096458733-f7afa1c6d906?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1592839457743-4a5c37a3732c?w=500&h=500&fit=crop"
+    ],
+    "stock": 95,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.3,
+    "reviews": 189,
+    "featured": true,
+    "isNew": true,
+    "sold": 145,
+    "specifications": {
+      "capacity": "20000mAh",
+      "input": "USB-C",
+      "output": "2 USB-A + 1 USB-C",
+      "features": ["Fast charging", "LED indicator", "Compact design"]
+    }
+  },
+  {
+    "Id": 16,
+    "name": "Sunglasses",
+    "nameUrdu": "دھوپ کا چشمہ",
+    "description": "Stylish polarized sunglasses with UV protection. Perfect for driving and outdoor activities.",
+    "price": 2500,
+    "discountPrice": 2000,
+    "category": "accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1567057888186-4b8b5a0b7a3b?w=500&h=500&fit=crop"
+    ],
+    "stock": 78,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.4,
+    "reviews": 234,
+    "featured": false,
+    "isNew": false,
+    "sold": 312,
+    "specifications": {
+      "lens": "Polarized",
+      "frame": "Metal",
+      "UV protection": "100%",
+      "colors": ["Black", "Brown", "Silver"],
+      "style": "Aviator"
+    }
+  },
+  {
+    "Id": 17,
+    "name": "Backpack",
+    "nameUrdu": "بیک پیک",
+    "description": "Durable travel backpack with multiple compartments. Perfect for school, work, and travel.",
+    "price": 6800,
+    "discountPrice": 5700,
+    "category": "accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=500&fit=crop"
+    ],
+    "stock": 64,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.6,
+    "reviews": 178,
+    "featured": true,
+    "isNew": false,
+    "sold": 167,
+    "specifications": {
+      "material": "Nylon",
+      "capacity": "30L",
+      "features": ["Laptop compartment", "Water resistant", "Padded straps"],
+      "colors": ["Black", "Navy", "Gray"],
+      "dimensions": "45cm x 30cm x 20cm"
+    }
+  },
+  {
+    "Id": 18,
+    "name": "Wireless Mouse",
+    "nameUrdu": "وائرلیس ماؤس",
+    "description": "Ergonomic wireless mouse with long battery life. Perfect for office work and gaming.",
+    "price": 2200,
+    "discountPrice": 1800,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1615651636744-8d1a8a1a2a54?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1609092520248-c8e3e2b7c74d?w=500&h=500&fit=crop"
+    ],
+    "stock": 120,
+    "isCODAllowed": false,
+    "isFromChina": true,
+    "rating": 4.1,
+    "reviews": 267,
+    "featured": false,
+    "isNew": false,
+    "sold": 345,
+    "specifications": {
+      "connectivity": "2.4GHz wireless",
+      "battery": "12 months",
+      "DPI": "1600",
+      "features": ["Ergonomic design", "Silent clicks", "Plug and play"]
+    }
+  },
+  {
+    "Id": 19,
+    "name": "Cotton T-Shirt",
+    "nameUrdu": "کپاس کی ٹی شرٹ",
+    "description": "Soft cotton t-shirt available in various colors. Perfect for casual wear and comfort.",
+    "price": 1500,
+    "discountPrice": 1200,
+    "category": "clothing",
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&h=500&fit=crop"
+    ],
+    "stock": 150,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.2,
+    "reviews": 445,
+    "featured": false,
+    "isNew": false,
+    "sold": 567,
+    "specifications": {
+      "material": "100% Cotton",
+      "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+      "colors": ["White", "Black", "Gray", "Blue", "Red", "Green"],
+      "fit": "Regular"
+    }
+  },
+  {
+    "Id": 20,
+    "name": "Sports Watch",
+    "nameUrdu": "کھیل کی گھڑی",
+    "description": "Durable sports watch with water resistance and multiple functions. Perfect for athletes.",
+    "price": 4500,
+    "discountPrice": 3800,
+    "category": "accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1579586337278-3f436f25d4d5?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&h=500&fit=crop"
+    ],
+    "stock": 89,
+    "isCODAllowed": true,
+    "isFromChina": false,
+    "rating": 4.0,
+    "reviews": 156,
+    "featured": false,
+    "isNew": false,
+    "sold": 198,
+    "specifications": {
+      "features": ["Stopwatch", "Alarm", "Date display", "Backlight"],
+      "water resistance": "50m",
+      "battery": "2 years",
+      "colors": ["Black", "Blue", "Red"]
+    }
+  }
+]
