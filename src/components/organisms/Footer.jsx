@@ -7,7 +7,7 @@ import ApperIcon from '@/components/ApperIcon';
 const Footer = () => {
   const { t, language } = useLanguage();
 
-  const footerLinks = {
+const footerLinks = {
     company: [
       { name: 'About Us', path: '/about' },
       { name: 'Contact', path: '/contact' },
@@ -139,38 +139,82 @@ const Footer = () => {
 
 {/* Trust Badges Section */}
         <div className="border-t border-gray-600 mt-12 pt-8 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-xl font-semibold text-white mb-2">Why Trust AliBix?</h3>
+            <p className="text-gray-300 text-sm">Your security and satisfaction are our top priorities</p>
+          </motion.div>
+          
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <ApperIcon name="Shield" size={24} className="text-green-400" />
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                <ApperIcon name="ShieldCheck" size={24} className="text-green-400" />
               </div>
-              <h4 className="text-white font-semibold text-sm mb-1">Secure Shopping</h4>
-              <p className="text-gray-300 text-xs">SSL Protected</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <ApperIcon name="Truck" size={24} className="text-blue-400" />
+              <h4 className="text-white font-semibold text-sm mb-1">Bank-Level Security</h4>
+              <p className="text-gray-300 text-xs">256-bit SSL encryption</p>
+              <div className="flex justify-center mt-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
               </div>
-              <h4 className="text-white font-semibold text-sm mb-1">Fast Delivery</h4>
-              <p className="text-gray-300 text-xs">2-3 Business Days</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <ApperIcon name="RefreshCw" size={24} className="text-purple-400" />
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                <ApperIcon name="TruckIcon" size={24} className="text-blue-400" />
               </div>
-              <h4 className="text-white font-semibold text-sm mb-1">Easy Returns</h4>
-              <p className="text-gray-300 text-xs">7-Day Policy</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <ApperIcon name="Headphones" size={24} className="text-orange-400" />
+              <h4 className="text-white font-semibold text-sm mb-1">Express Delivery</h4>
+              <p className="text-gray-300 text-xs">Next-day in major cities</p>
+              <div className="flex justify-center mt-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
               </div>
-              <h4 className="text-white font-semibold text-sm mb-1">24/7 Support</h4>
-              <p className="text-gray-300 text-xs">Always Here</p>
-            </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                <ApperIcon name="RotateCcw" size={24} className="text-purple-400" />
+              </div>
+              <h4 className="text-white font-semibold text-sm mb-1">Money-Back Guarantee</h4>
+              <p className="text-gray-300 text-xs">100% refund policy</p>
+              <div className="flex justify-center mt-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                <ApperIcon name="MessageCircle" size={24} className="text-orange-400" />
+              </div>
+              <h4 className="text-white font-semibold text-sm mb-1">Live Chat Support</h4>
+              <p className="text-gray-300 text-xs">Instant help available</p>
+              <div className="flex justify-center mt-2">
+                <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+              </div>
+            </motion.div>
           </div>
         </div>
-
         {/* Bottom Section */}
         <div className="border-t border-gray-600 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between mb-6">
@@ -179,23 +223,37 @@ const Footer = () => {
               © 2024 AliBix. All rights reserved.
             </p>
 
-            {/* Payment Methods */}
-            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-              <span className="text-gray-300 text-sm">We Accept:</span>
+{/* Payment Methods & Security */}
+            <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+              <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                <span className="text-gray-300 text-sm font-medium">Secure Payments:</span>
+                <div className="flex items-center space-x-3">
+                  {paymentMethods.map((method) => (
+                    <motion.div
+                      key={method.name}
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg hover:bg-white/20 transition-all duration-200 border border-white/10"
+                    >
+                      <ApperIcon name={method.icon} size={18} className="text-white" />
+                      <span className="text-xs font-medium">{method.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Security Badges */}
               <div className="flex items-center space-x-3">
-                {paymentMethods.map((method) => (
-                  <div
-                    key={method.name}
-                    className="flex items-center space-x-1 bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20 transition-colors duration-200"
-                  >
-                    <ApperIcon name={method.icon} size={18} />
-                    <span className="text-xs font-medium">{method.name}</span>
-                  </div>
-                ))}
+                <div className="flex items-center space-x-1 bg-green-600/20 px-3 py-2 rounded-lg border border-green-500/30">
+                  <ApperIcon name="Shield" size={16} className="text-green-400" />
+                  <span className="text-xs font-medium text-green-300">SSL Secured</span>
+                </div>
+                <div className="flex items-center space-x-1 bg-blue-600/20 px-3 py-2 rounded-lg border border-blue-500/30">
+                  <ApperIcon name="Award" size={16} className="text-blue-400" />
+                  <span className="text-xs font-medium text-blue-300">Verified</span>
+                </div>
               </div>
             </div>
           </div>
-
           {/* Mobile App Promotion */}
           <div className="text-center py-6 bg-white/5 rounded-lg">
             <p className="text-gray-300 text-sm mb-3">Download our mobile app for better experience</p>

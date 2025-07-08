@@ -3,14 +3,15 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
+import AboutUs from "@/components/pages/AboutUs";
 import Layout from "@/components/organisms/Layout";
 import AdminLayout from "@/components/organisms/AdminLayout";
 import AdminDashboard from "@/components/pages/AdminDashboard";
+import Cart from "@/components/pages/Cart";
+import Checkout from "@/components/pages/Checkout";
 import AdminLogin from "@/components/pages/AdminLogin";
 import AdminProducts from "@/components/pages/AdminProducts";
 import Home from "@/components/pages/Home";
-import Cart from "@/components/pages/Cart";
-import Checkout from "@/components/pages/Checkout";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -112,12 +113,13 @@ const App = () => {
               <WishlistProvider>
                 <RouterErrorBoundary>
                   <BrowserRouter>
-                    <Routes>
+<Routes>
                       {/* Public Routes */}
-<Route path="/" element={<Layout />}>
+                      <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
                         <Route path="cart" element={<Cart />} />
                         <Route path="checkout" element={<Checkout />} />
+                        <Route path="about" element={<AboutUs />} />
                         {/* Additional routes will be added as components are developed */}
                       </Route>
 

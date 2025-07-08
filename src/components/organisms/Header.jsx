@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import ApperIcon from '@/components/ApperIcon';
 import SearchBar from '@/components/molecules/SearchBar';
 import LanguageToggle from '@/components/molecules/LanguageToggle';
-
+import ThemeToggle from '@/components/molecules/ThemeToggle';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { itemCount } = useCart();
@@ -61,11 +61,13 @@ const Header = () => {
             <SearchBar placeholder={`${t('search')} products...`} />
           </div>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+{/* Right Side Actions */}
+          <div className="flex items-center space-x-2 md:space-x-4">
+            {/* Theme Toggle */}
+            <ThemeToggle className="hidden md:block" />
+            
             {/* Language Toggle */}
             <LanguageToggle />
-
             {/* Wishlist */}
             <Link
               to="/wishlist"
@@ -137,8 +139,7 @@ const Header = () => {
                 <span className="font-medium">{item.name}</span>
               </Link>
             ))}
-            
-            {/* Mobile Profile Link */}
+{/* Mobile Profile Link */}
             <Link
               to="/profile"
               className="flex items-center space-x-3 p-3 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-all duration-200"
@@ -147,6 +148,12 @@ const Header = () => {
               <ApperIcon name="User" size={20} />
               <span className="font-medium">{t('profile')}</span>
             </Link>
+            
+            {/* Mobile Theme Toggle */}
+            <div className="flex items-center justify-between p-3">
+              <span className="font-medium text-gray-700">Theme</span>
+              <ThemeToggle variant="switch" />
+            </div>
           </nav>
         </motion.div>
       )}
